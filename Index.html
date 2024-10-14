@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hold to Show Content</title>
+    <style>
+        #hidden-content {
+            display: none;
+            background-color: lightblue;
+            padding: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="message">Press and hold to see hidden content</div>
+    <div id="hidden-content">This is the hidden content!</div>
+
+    <script>
+        const hiddenContent = document.getElementById('hidden-content');
+        const message = document.getElementById('message');
+
+        // Show content when screen is pressed and held
+        function showContent() {
+            hiddenContent.style.display = 'block';
+        }
+
+        // Hide content when the hold is released
+        function hideContent() {
+            hiddenContent.style.display = 'none';
+        }
+
+        // For touch events (mobile)
+        message.addEventListener('touchstart', showContent);
+        message.addEventListener('touchend', hideContent);
+
+        // For mouse events (desktop)
+        message.addEventListener('mousedown', showContent);
+        message.addEventListener('mouseup', hideContent);
+    </script>
+
+</body>
+</html>
